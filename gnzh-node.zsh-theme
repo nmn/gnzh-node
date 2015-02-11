@@ -35,24 +35,17 @@ local return_code="%(?..%{$PR_RED%}%? ↵%{$PR_NO_COLOR%})"
 local user_host='${PR_USER}${PR_CYAN}@${PR_HOST}'
 local current_dir='%{$PR_BOLD$PR_BLUE%}%~%{$PR_NO_COLOR%}'
 
-function print_node_version {
-  local node_version=''
-  if which node &> /dev/null; then # detect sysem-wide rvm installation
-    if node -v | grep v1 &> /dev/null; then
-      node_version='%{$PR_RED%}iojs $(node -v)›%{$PR_NO_COLOR%}'
-    elif node -v | grep v0 &> /dev/null; then
-      node_version='%{$PR_RED%}node $(node -v)›%{$PR_NO_COLOR%}'
-    fi
-  elif which iojs &> /dev/null; then # detect sysem-wide rvm installation
-    node_version='%{$PR_RED%}‹io.js $(iojs -v)›%{$PR_NO_COLOR%}'
-  fi
-  echo $node_version
-}
+local node_version=''
+if which node &> /dev/null; then # detect sysem-wide rvm installation
+    node_version='%{$PR_RED%}‹node $(node -v)›%{$PR_NO_COLOR%}'
+elif which iojs &> /dev/null; then # detect sysem-wide rvm installation
+  node_version='%{$PR_RED%}‹io.js $(iojs -v)›%{$PR_NO_COLOR%}'
+fi
 
 local git_branch='$(git_prompt_info)%{$PR_NO_COLOR%}'
 
 #PROMPT="${user_host} ${current_dir} ${node_version} ${git_branch}$PR_PROMPT "
-PROMPT="╭─${user_host} ${current_dir} ${print_node_version} ${git_branch}
+PROMPT="╭─${user_host} ${current_dir} ${node_version} ${git_branch}
 ╰─$PR_PROMPT "
 RPS1="${return_code}"
 
