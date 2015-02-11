@@ -52,7 +52,7 @@ function print_node_version {
 local git_branch='$(git_prompt_info)%{$PR_NO_COLOR%}'
 
 #PROMPT="${user_host} ${current_dir} ${node_version} ${git_branch}$PR_PROMPT "
-PROMPT="╭─${user_host} ${current_dir} `print_node_version` ${git_branch}
+PROMPT="╭─${user_host} ${current_dir} ${print_node_version} ${git_branch}
 ╰─$PR_PROMPT "
 RPS1="${return_code}"
 
