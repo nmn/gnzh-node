@@ -37,22 +37,25 @@ local current_dir='%{$PR_BOLD$PR_BLUE%}%~%{$PR_NO_COLOR%}'
 
 
 function print_node_version {
-  local node_version=''
+  # local node_version=''
   if which node &> /dev/null; then # detect sysem-wide rvm installation
     if node -v | grep v1 &> /dev/null; then
-      node_version='%{$PR_RED%}‹iojs $(node -v)›%{$PR_NO_COLOR%}'
+      echo "iojs $(node -v)" 
+      # node_version='%{$PR_RED%}‹iojs $(node -v)›%{$PR_NO_COLOR%}'
     elif node -v | grep v0 &> /dev/null; then
-      node_version='%{$PR_RED%}‹node $(node -v)›%{$PR_NO_COLOR%}'
+      echo "node $(node -v)" 
+      # node_version='%{$PR_RED%}‹node $(node -v)›%{$PR_NO_COLOR%}'
     fi
   elif which iojs &> /dev/null; then # detect sysem-wide rvm installation
-    node_version='%{$PR_RED%}‹iojs $(iojs -v)›%{$PR_NO_COLOR%}'
+    echo "iojs $(node -v)" 
+    # node_version='%{$PR_RED%}‹iojs $(iojs -v)›%{$PR_NO_COLOR%}'
   fi
 
-  echo $node_version
+  # echo $node_version
 }
 
 local git_branch='$(git_prompt_info)%{$PR_NO_COLOR%}'
-local my_func='%{$PR_RED%}‹iojs $(date)›%{$PR_NO_COLOR%}'
+local my_func='%{$PR_RED%}‹$(date)›%{$PR_NO_COLOR%}'
 
 #PROMPT="${user_host} ${current_dir} ${node_version} ${git_branch}$PR_PROMPT "
 PROMPT="╭─${user_host} ${current_dir} ${my_func} ${git_branch}
