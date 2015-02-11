@@ -37,12 +37,7 @@ local current_dir='%{$PR_BOLD$PR_BLUE%}%~%{$PR_NO_COLOR%}'
 
 local node_version=''
 if which node &> /dev/null; then # detect sysem-wide rvm installation
-
-  if node -v | grep v1 &> /dev/null; then
-    node_version='%{$PR_RED%}‹io.js $(node -v)›%{$PR_NO_COLOR%}'
-  elif node -v | grep v0 &> /dev/null; then
-    node_version='%{$PR_RED%}‹node $(node -v)›%{$PR_NO_COLOR%}'
-  fi
+  node_version='%{$PR_RED%}‹node $(node -v)›%{$PR_NO_COLOR%}'
 elif which iojs &> /dev/null; then # detect sysem-wide rvm installation
   node_version='%{$PR_RED%}‹io.js $(iojs -v)›%{$PR_NO_COLOR%}'
 fi
