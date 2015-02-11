@@ -42,10 +42,14 @@ elif which iojs &> /dev/null; then # detect sysem-wide rvm installation
   node_version='%{$PR_RED%}‹io.js $(iojs -v)›%{$PR_NO_COLOR%}'
 fi
 
+function print_node_version {
+  echo $node_version
+}
+
 local git_branch='$(git_prompt_info)%{$PR_NO_COLOR%}'
 
 #PROMPT="${user_host} ${current_dir} ${node_version} ${git_branch}$PR_PROMPT "
-PROMPT="╭─${user_host} ${current_dir} ${node_version} ${git_branch}
+PROMPT="╭─${user_host} ${current_dir} `print_node_version` ${git_branch}
 ╰─$PR_PROMPT "
 RPS1="${return_code}"
 
