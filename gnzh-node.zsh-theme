@@ -40,7 +40,7 @@ if which node &> /dev/null; then # detect sysem-wide rvm installation
   if which node | grep v1 &> /dev/null; then
     node_version='%{$PR_RED%}‹io.js $(node -v)›%{$PR_NO_COLOR%}'
   elif which node | grep v0 &> /dev/null; then
-    node_version='%{$PR_RED%}‹node $(node -v)›%{$PR_NO_COLOR%}'
+    node_version='%{$PR_RED%}‹io.js $(node -v)›%{$PR_NO_COLOR%}'
   fi
 elif which iojs &> /dev/null; then # detect sysem-wide rvm installation
   node_version='%{$PR_RED%}‹io.js $(iojs -v)›%{$PR_NO_COLOR%}'
