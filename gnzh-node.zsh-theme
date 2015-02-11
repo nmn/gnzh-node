@@ -52,9 +52,10 @@ function print_node_version {
 }
 
 local git_branch='$(git_prompt_info)%{$PR_NO_COLOR%}'
+local my_func='%{$PR_RED%}‹iojs $(date)›%{$PR_NO_COLOR%}'
 
 #PROMPT="${user_host} ${current_dir} ${node_version} ${git_branch}$PR_PROMPT "
-PROMPT="╭─${user_host} ${current_dir} ${`date`} ${git_branch}
+PROMPT="╭─${user_host} ${current_dir} ${my_func} ${git_branch}
 ╰─$PR_PROMPT "
 RPS1="${return_code}"
 
