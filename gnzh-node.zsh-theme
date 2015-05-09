@@ -41,7 +41,8 @@ function print_node_version {
   if which node &> /dev/null; then # detect sysem-wide rvm installation
     if node -v | grep v1 &> /dev/null; then
       echo "iojs $(node -v)" 
-      # node_version='%{$PR_RED%}‹iojs $(node -v)›%{$PR_NO_COLOR%}'
+    elif node -v | grep v2 &> /dev/null; then
+      echo "iojs $(node -v)" 
     elif node -v | grep v0 &> /dev/null; then
       echo "node $(node -v)" 
       # node_version='%{$PR_RED%}‹node $(node -v)›%{$PR_NO_COLOR%}'
