@@ -39,21 +39,11 @@ local current_dir='%{$PR_BOLD$PR_BLUE%}%~%{$PR_NO_COLOR%}'
 function print_node_version {
   # local node_version=''
   if which node &> /dev/null; then # detect sysem-wide rvm installation
-    if node -v | grep v1 &> /dev/null; then
-      echo "iojs $(node -v)"
-    elif node -v | grep v2 &> /dev/null; then
-      echo "iojs $(node -v)"
-    elif node -v | grep v3 &> /dev/null; then
-      echo "iojs $(node -v)"
-    elif node -v | grep v4 &> /dev/null; then
-      echo "node $(node -v)"
-    elif node -v | grep v0 &> /dev/null; then
-      echo "node $(node -v)"
-      # node_version='%{$PR_RED%}‹node $(node -v)›%{$PR_NO_COLOR%}'
-    fi
+    echo "node $(node -v)"
   elif which iojs &> /dev/null; then # detect sysem-wide rvm installation
     echo "iojs $(node -v)"
-    # node_version='%{$PR_RED%}‹iojs $(iojs -v)›%{$PR_NO_COLOR%}'
+  else
+    echo "no node found"
   fi
 
   # echo $node_version
