@@ -52,8 +52,8 @@ function print_node_version {
 local git_info=$(_dotfiles_scm_info)
 local my_func='%{$PR_RED%}‹$(print_node_version)›%{$PR_NO_COLOR%}'
 
-#PROMPT="${user_host} ${current_dir} ${node_version} ${git_info}$PR_PROMPT "
-PROMPT="╭─${user_host} ${current_dir} ${my_func} ${git_info}
+#PROMPT="${user_host} ${current_dir} ${node_version} ${_dotfiles_scm_info}$PR_PROMPT "
+PROMPT="╭─${user_host} ${current_dir} ${my_func} ${_dotfiles_scm_info}
 ╰─$PR_PROMPT "
 RPS1="${return_code}"
 
