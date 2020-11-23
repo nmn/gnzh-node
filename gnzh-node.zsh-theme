@@ -2,7 +2,7 @@
 
 function print_node_version {
   # local node_version=''
-  if which node &> /dev/null; then # detect sysem-wide rvm installation
+  if which node &> /dev/null; then # detect sysem-wide node installation
     echo "node $(node -v)"
   else
     echo "no node found"
@@ -41,7 +41,7 @@ local user_host="${PR_USER}%F{cyan}@${PR_HOST}"
 local current_dir="%B%F{blue}%~%f%b"
 local git_branch='$(git_prompt_info)'
 
-PROMPT="╭─${user_host} ${current_dir} \$(print_node_version) ${git_branch}
+PROMPT="╭─${user_host} ${current_dir} %F{red}‹\$(print_node_version)›%f ${git_branch}
 ╰─$PR_PROMPT "
 RPROMPT="${return_code}"
 
